@@ -1,28 +1,40 @@
-var utils  = require('course-utilities');
+var utils = require('course-utilities');
 var mit = utils.load('./mit.js', 'mit');
 
-describe('MIT', () => {
+describe('MIT', () =>
+{
 
-    test('Object properties present', () => {
+    test('Object properties present', () =>
+    {
         expect(mit).toHaveProperty('city');
         expect(mit).toHaveProperty('colors');
         expect(mit).toHaveProperty('mascot');
     });
 
-    test('City match', () => {
-        expect(mit.city).toBe('Cambridge');
+    test('City match', () =>
+    {
+        expect(mit.city).toContain('Cambridge');
     });
 
-    test('Colors match', () => {
-        expect(mit.colors).toContain('Silver Gray');    
+    test('Colors match', () =>
+    {
+        expect(mit.colors).toContain('Silver');
+        expect(mit.colors).toContain('Gray');
     });
 
-    test('Founded range', () => {
+    test('Founded range', () =>
+    {
         expect(mit.founded).toBeLessThanOrEqual(1875);
-        expect(mit.founded).toBeGreaterThanOrEqual(1850);    
+        expect(mit.founded).toBeGreaterThanOrEqual(1850);
     });
 
-    test('Motto', () => {
-        expect(mit.motto).toMatch('Mens');
+    test('Motto', () =>
+    {
+        expect(mit.motto).toContain('Mens');
+    });
+
+    test('Mascot', () =>
+    {
+        expect(mit.mascot).toContain('Beaver');
     });
 });
